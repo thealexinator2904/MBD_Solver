@@ -4,7 +4,7 @@ close all;
 
 t0 = 0;
 t_end = 10;
-h = 0.0001;
+h = 0.0000001;
 
 y=0;
 t= t0:h:t_end;
@@ -12,12 +12,12 @@ y=zeros(length(t), 1);
 y(1)=1;
 
 for i =2:t_end/h
-    y(i) = y(i-1)+h*eq5(y(i-1),i*h);
+    y(i) = y(i-1)+h*eq5(y(i-1),i*h+t0);
 end
 
-plot(t,y)
+plot(t,abs(y))
 hold('on')
-plot(t,eq5_ideal(t));
+plot(t,abs(eq5_ideal(t)));
 grid('on')
 legend('ode', 'ideal solution')
 xlabel('t in s')
