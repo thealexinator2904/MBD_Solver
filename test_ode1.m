@@ -102,3 +102,9 @@ xlabel('t in s')
 ylabel('y')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+hgexport(f_eq1, 'plots/equation_1');
+hgexport(f_eq2, 'plots/equation_2');
+hgexport(f_eq3, 'plots/equation_3');
+hgexport(f_eq4, 'plots/equation_4');
+hgexport(f_eq5, 'plots/equation_5');
+hgexport(f_eq6, 'plots/equation_6');
