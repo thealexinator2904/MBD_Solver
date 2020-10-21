@@ -24,13 +24,14 @@
 \textwidth
 }
 
-\addto\extrasngerman{\def\figureautorefname{picture}}
-\addto\extrasngerman{\def\equationautorefname{equation}}
-\addto\extrasngerman{\def\tableautorefname{table}}
+%\addto\extrasngerman{\def\figureautorefname{picture}}
+%\addto\extrasngerman{\def\equationautorefname{equation}}
+%\addto\extrasngerman{\def\tableautorefname{table}}
 
 \input{Einheiten}
 
 \begin{document}
+\input{matlab}
 \input{frontmatter/glossaries}
 %frontmatter inluding:
 %titlepage, abstract, acknowledgments, declaration, toc, lof, lot
@@ -44,9 +45,12 @@
 %mainmatter inluding: Parts, chapters, sections, appendicies
 \mainmatter
 %Hier die verschiedenn tex_Dokumente der Labore einfügen
-\chapter{Überschrift 1}
+\chapter{Program architecture}
+\section{Solver}
 
-\chapter{Überschrift 2}
+\section{Equations}
+
+\chapter{Results}
 
 
 \newpage
