@@ -3,8 +3,8 @@ clc;
 close all;
 addpath(genpath('equations/'));
 t0 = 0;
-t_end = 2;
-h = [0.1, 0.01];
+t_end = 30;
+h = [ 0.1, 0.5]; %, 1.5, 2, 3, 5 
 
 f_eq1=figure('Name', 'equation_1');
 for i=1:length(h)
