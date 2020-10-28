@@ -4,9 +4,11 @@ function [y]=runge_kutta_so(eq, t0, h, t_end)
     y(1)=1;
     
     for i =2:t_end/h
-        k1=eq(y(i-1),i*h+t0);
-        k2=eq()
-        %      y(i) = y(i-1)+h*eq(y(i-1),i*h+t0);
+        tk = i*h+t0;
+        yk = y(i-1);
+        k1=eq(yk,tk);
+        k2=eq(yk+k1.*h./2, tk+h./2);
+        y(i)=yk+h.*k2;
     end
 end
 
