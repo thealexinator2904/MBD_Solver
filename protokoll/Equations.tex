@@ -1,0 +1,15 @@
+\subsection{Equation 1}
+\subsubsection{analytic solution}
+\begin{align}
+    \frac{dy}{dt}&=-\frac{y}{\tau} \text{  Seperation of Variables}\\
+    \frac{dy}{y}&=-\frac{dt}{\tau} \\
+    \int\frac{dy}{y} dt&=-\frac{1}{\tau} \int dt \\
+    \ln{|y|}&=-\frac{1}{\tau}t+c \\
+    y&=e^{-\frac{1}{\tau}t+c} \\
+    y&=e^{-\frac{1}{\tau}t}\cdot e^{c} \text{ mit: } k=\pm e^c\\
+    y(t)&=k\cdot e^{-\frac{t}{\tau}}\text{ mit: } k\neq0
+\end{align}
+
+\subsubsection{Functions}
+\lstinputlisting[language=Matlab]{equations/eq1.m}
+\lstinputlisting[language=Matlab]{equations/eq1_ideal.m}
