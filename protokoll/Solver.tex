@@ -4,7 +4,14 @@
     y_{k+1}=y_k+h\cdot f(t_k, yk)
 \end{align}
 \subsubsection{Matlab Code}
-\lstinputlisting[language=Matlab]{forward_euler.m}
+\lstinputlisting[language=Matlab, caption=Matlab function forward Euler method]{forward_euler.m}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Runge-Kutta second order method (Midpoint)}
-\lstinputlisting[language=Matlab]{}
+\subsubsection{Matlab Code}
+\lstinputlisting[language=Matlab, caption=Matlab Function runge kutta method]{runge_kutta_so.m}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{overall Program structure}
+\lstinputlisting[language=Matlab, firstline=16, lastline=34, caption=Testing method for the different solver, label=PrintingFunction]{test_ode1.m}
+As seen in listing \ref{PrintingFunction} is every Function tested with the three different solving methods tested. In addition to that, the ideal function is printed with a greatly increased accuracy. This ensures that the best-possible comparison can be pulled from this plots. 
