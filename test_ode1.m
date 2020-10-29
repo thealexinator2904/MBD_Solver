@@ -3,108 +3,32 @@ clc;
 close all;
 addpath(genpath('equations/'));
 t0 = 0;
-t_end = 30;
+t_end = 4;
 h = [ 0.1, 0.5]; %, 1.5, 2, 3, 5 
-
-f_eq1=figure('Name', 'equation_1');
-for i=1:length(h)
-   y_fe=forward_euler(@eq1, t0, h(i), t_end);
-   y_rk = runge_kutta_so(@eq1, t0, h(i), t_end);
-   t= t0:h(i):t_end;
-   plot(t,abs(y_fe))
-   hold('on') 
-end
-
-plot(t,abs(eq1_ideal(t)));
-grid('on')
-legend('ode h=0,1','ode h=0,01', 'ideal solution')
-xlabel('t in s')
-ylabel('y')
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-f_eq2=figure('Name', 'equation_2');
-for i=1:length(h)
-   y_fe=forward_euler(@eq2, t0, h(i), t_end);
-    
-   t= t0:h(i):t_end;
-   plot(t,abs(y_fe))
-   hold('on') 
-end
-
-plot(t,abs(eq2_ideal(t)));
-grid('on')
-legend('ode h=0,1','ode h=0,01', 'ideal solution')
-xlabel('t in s')
-ylabel('y')
+print_res(@eq1, @eq1_ideal, 'equation_1',t0,h,t_end)
+print_res(@eq2, @eq2_ideal, 'equation_2',t0,h,t_end)
+print_res(@eq3, @eq3_ideal, 'equation_3',t0,h,t_end)
+print_res(@eq4, @eq4_ideal, 'equation_4',t0,h,t_end)
+print_res(@eq5, @eq5_ideal, 'equation_5',t0,h,t_end)
+print_res(@eq6, @eq6_ideal, 'equation_6',t0,h,t_end)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-f_eq3=figure('Name', 'equation_3');
-for i=1:length(h)
-   y_fe=forward_euler(@eq3, t0, h(i), t_end);
-    
-   t= t0:h(i):t_end;
-   plot(t,abs(y_fe))
-   hold('on') 
+function [] =print_res(eq_ph, eq_ideal,name, t0, h, t_end)
+    f_eq=figure('Name', name);
+    for i=1:length(h)
+       y_fe=forward_euler(eq_ph, t0, h(i), t_end);
+       y_rk = runge_kutta_so(eq_ph, t0, h(i), t_end);
+       
+       t= t0:h(i):t_end;
+       plot(t,abs(y_fe));
+       hold('on') 
+       plot(t,abs(y_rk));
+    end
+    t= t0:0.00001:t_end;
+    plot(t,abs(eq_ideal(t)));
+    grid('on')
+    legend('fe h=0,1','rk h=0,1','fe h=0,01','rk h=0,01', 'ideal solution')
+    xlabel('t in s')
+    ylabel('y')
+    hgexport(f_eq, ['plots/' name]);
 end
-
-plot(t,abs(eq3_ideal(t)));
-grid('on')
-legend('ode h=0,1','ode h=0,01', 'ideal solution')
-xlabel('t in s')
-ylabel('y')
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-f_eq4=figure('Name', 'equation_4');
-for i=1:length(h)
-   y_fe=forward_euler(@eq4, t0, h(i), t_end);
-    
-   t= t0:h(i):t_end;
-   plot(t,abs(y_fe))
-   hold('on') 
-end
-
-plot(t,abs(eq4_ideal(t)));
-grid('on')
-legend('ode h=0,1','ode h=0,01', 'ideal solution')
-xlabel('t in s')
-ylabel('y')
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-f_eq5=figure('Name', 'equation_5');
-for i=1:length(h)
-   y_fe=forward_euler(@eq5, t0, h(i), t_end);
-    
-   t= t0:h(i):t_end;
-   plot(t,abs(y_fe))
-   hold('on') 
-end
-
-plot(t,abs(eq5_ideal(t)));
-grid('on')
-legend('ode h=0,1','ode h=0,01', 'ideal solution')
-xlabel('t in s')
-ylabel('y')
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-f_eq6=figure('Name', 'equation_6');
-for i=1:length(h)
-   y_fe=forward_euler(@eq6, t0, h(i), t_end);
-    
-   t= t0:h(i):t_end;
-   plot(t,abs(y_fe))
-   hold('on') 
-end
-
-plot(t,abs(eq6_ideal(t)));
-grid('on')
-legend('ode h=0,1','ode h=0,01', 'ideal solution')
-xlabel('t in s')
-ylabel('y')
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-hgexport(f_eq1, 'plots/equation_1');
-hgexport(f_eq2, 'plots/equation_2');
-hgexport(f_eq3, 'plots/equation_3');
-hgexport(f_eq4, 'plots/equation_4');
-hgexport(f_eq5, 'plots/equation_5');
-hgexport(f_eq6, 'plots/equation_6');
