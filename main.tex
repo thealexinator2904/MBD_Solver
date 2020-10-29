@@ -5,6 +5,7 @@
 \newcommand{\ECE}{true}
 %%%%% Required Settings for the template %%%%%
 \input{ECEconfig.sty}
+\input{mcode.sty}
 \usepackage{hyperref}
 
 \makeglossaries
@@ -31,7 +32,7 @@
 \input{Einheiten}
 
 \begin{document}
-\input{matlab}
+%\input{matlab}
 \input{frontmatter/glossaries}
 %frontmatter inluding:
 %titlepage, abstract, acknowledgments, declaration, toc, lof, lot
@@ -47,11 +48,11 @@
 %Hier die verschiedenn tex_Dokumente der Labore einfügen
 \chapter{Program architecture}
 \section{Solver}
-
+\input{protokoll/Solver}
 \section{Equations}
-
+\input{protokoll/Equations}
 \chapter{Results}
-
+\input{protokoll/results}
 
 \newpage
 \chapter{Signaturen}
