@@ -1,5 +1,12 @@
 \subsection{Forward Euler}
+\subsection{Task}
+The primary focus of this Laboratory unit is the Implementation of three different solvers, which are tested on six different differential equations. In the first chapter the Forward euler method should be implemented. 
 \subsubsection{theoretical background}
+The forward euler works on the base of a truncated Taylor series by implementing the idea of local linearity. Which basically means that the Taylor series is cut of after the first expansion term. It's primary application is the approximate solution of first order differential equations. At detailed enough observation it can be seen, that the resulting curve consists of numerous straight lines.
+
+However the explizit calculation of this values begins with an initial value $y_0$, which has to be set before the start of the algorithm, as well as the stepsize $h$.
+
+The run of this algorithm will always result in some error. In majority of cases, the error decreases by decreasing the stepsize. This will also lead to increased memory usage and highly increased calculation times.
 \begin{align}
     y_{k+1}=y_k+h\cdot f(t_k, yk)
 \end{align}
@@ -8,9 +15,31 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Runge-Kutta second order method (Midpoint)}
+\subsubsection{Task}
+Now the so called Runge-Kutta algorithm should be implemented. It is mainly used in our example to provide a second solution for error calculation in a next chapter.
+
+\subsubsection{Theoretical background}
+The Midpoint method is a advancment of the forward euler method. The improvement is made by decreasing the error due to the placement of the tangent at $t=t_k+\frac{h}{2}$. The before used constants $h$ and $t_0$ are here mandatory too
+\begin{align}
+    k_1=f(t_k,t_k)\\
+    k_2=f(t_k+\frac{h}{2} , y_k+k_1\frac{h}{2})\\
+    y_{k+1}=y_k+hk_2
+\end{align}
 \subsubsection{Matlab Code}
 \lstinputlisting[language=Matlab, caption=Matlab Function runge kutta method]{runge_kutta_so.m}
 
+\subsection{Variable step size}
+\subsubsection{Task}
+Our before implemented midpoint algorithm should be expanded with a dynamic calculation of the step size. This should be calculated via the equations:
+\begin{align}
+    \epsilon = |y_{kmp}-y_{fe}| \\
+    h=h\sqrt{\frac{r_{tol}}{\epsilon}}
+\end{align}
+
+\subsubsection{theoretical background}
+
+\subsubsection{Matlab Code}
+\lstinputlisting[language=Matlab, caption=Matlab function for variable step size solver]{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{overall Program structure}
 \lstinputlisting[language=Matlab, firstline=16, lastline=34, caption=Testing method for the different solver, label=PrintingFunction]{test_ode1.m}
